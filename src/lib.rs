@@ -30,6 +30,10 @@ fn enum_or_struct(item: &TokenStream) -> Option<EnumOrStruct> {
     })
 }
 
+/// Auto-derive for the [`Get`] type class for structs.
+///
+/// [`Get`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.Get.html
+///
 #[proc_macro_derive(Get)]
 pub fn get(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -74,6 +78,10 @@ fn struct_get_impl(struct_definition: ItemStruct) -> TokenStream2 {
     quote![#(#qs)*]
 }
 
+/// Auto-derive for the [`GetRef`] type class for structs.
+///
+/// [`GetRef`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.GetRef.html
+///
 #[proc_macro_derive(GetRef)]
 pub fn get_ref(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -118,6 +126,10 @@ fn struct_get_ref_impl(struct_definition: ItemStruct) -> TokenStream2 {
     quote![#(#qs)*]
 }
 
+/// Auto-derive for the [`GetOption`] type class for enums.
+///
+/// [`GetOption`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.GetOption.html
+///
 #[proc_macro_derive(GetOption)]
 pub fn get_option(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -187,6 +199,10 @@ fn get_option_impl(enum_definition: ItemEnum) -> TokenStream {
     quote![#(#qs)*].into()
 }
 
+/// Auto-derive for the [`Set`] type class for structs and enums.
+///
+/// [`Set`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.Set.html
+///
 #[proc_macro_derive(Set)]
 pub fn set(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -313,6 +329,10 @@ fn enum_set_impl(enum_definition: ItemEnum) -> TokenStream {
     quote![#(#qs)*].into()
 }
 
+/// Auto-derive for the [`SetOption`] type class for enums.
+///
+/// [`SetOption`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.SetOption.html
+///
 #[proc_macro_derive(SetOption)]
 pub fn set_option(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -399,6 +419,10 @@ fn set_option_impl(enum_definition: ItemEnum) -> TokenStream {
     quote![#(#qs)*].into()
 }
 
+/// Auto-derive for the [`Modify`] type class for structs and enums.
+///
+/// [`Modify`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.Modify.html
+///
 #[proc_macro_derive(Modify)]
 pub fn modify(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -527,6 +551,10 @@ fn enum_modify_impl(enum_definition: ItemEnum) -> TokenStream {
     quote![#(#qs)*].into()
 }
 
+/// Auto-derive for the [`ModifyOption`] type class for enums.
+///
+/// [`ModifyOption`]: https://docs.rs/photonix/0.1.1/photonix/focus/trait.ModifyOption.html
+///
 #[proc_macro_derive(ModifyOption)]
 pub fn modify_option(item: TokenStream) -> TokenStream {
     match enum_or_struct(&item) {
@@ -613,7 +641,6 @@ fn modify_option_impl(enum_definition: ItemEnum) -> TokenStream {
     quote![#(#qs)*].into()
 }
 
-#[derive(Debug)]
 enum EnumOrStruct {
     Enum,
     Struct,
