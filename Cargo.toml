@@ -1,6 +1,6 @@
 [package]
 name = "photonix_derive"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["bsoptei <bsoptei@gmail.com>"]
 description = "Derive macros for optics traits defined in photonix."
 license = "MIT"
